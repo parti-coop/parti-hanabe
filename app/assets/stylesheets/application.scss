@@ -23,3 +23,16 @@ body { padding-top: 60px; }
 .label-opposed {
   @extend .label-danger;
 }
+
+.alert-in_favor {
+  @extend .alert-success;
+}
+.alert-conditionally_in_favor {
+  @extend .alert-info;
+}
+.alert-conditionally_opposed {
+  @extend .alert-warning;
+}
+.alert-opposed {
+  @extend .alert-danger;
+}

@@ -4,7 +4,7 @@
     %small
       = link_to [:edit, issue] do
         %i.fa.fa-edit
-      = link_to issue, method: :delete, data: { confirm: 'are you sure?'} do
+      = link_to issue, method: :delete, data: { confirm: 'Are you sure?'} do
         %i.fa.fa-trash
   %p
     %small
@@ -12,6 +12,12 @@
       = issue.user.email
   %p
     %span.label.label-primary
+      %i.fa.fa-hand-o-down
+      투표
+      = issue.votes.count
+    &nbsp;
+    %span.label.label-danger
       %i.fa.fa-microphone
       연설
       = issue.speeches.count
+

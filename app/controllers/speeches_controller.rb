@@ -1,5 +1,5 @@
 class SpeechesController < ApplicationController
-  before_action :authenticate_user!, except: :show
+  before_action :authenticate_user!, except: [:show, :index]
 
   def index
     @issue = Issue.find params[:issue_id]
@@ -31,14 +31,14 @@ class SpeechesController < ApplicationController
 
   def update
     @speech = Speech.find params[:id]
-    @speech.update(update_params)
-    redirect_to @issue
+    @speech.update!(update_params)
+    redirect_to @speech
   end
 
   def destroy
-    @issue = Speech.find params[:id]
-    @issue.destroy
-    redirect_to @speech
+    @speech = Speech.find params[:id]
+    @speech.destroy
+    redirect_to issue_speeches_path(issue_id: @speech.issue, position: @speech.position)
   end
 
   private
