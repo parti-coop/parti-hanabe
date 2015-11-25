@@ -1,0 +1,7 @@
+ko:
+  enums:
+    positions:
+      in_favor: 찬성
+      conditionally_in_favor: 조건부 찬성
+      conditionally_opposed: 조건부 반대
+      opposed: 반대

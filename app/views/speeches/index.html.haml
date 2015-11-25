@@ -1,0 +1,27 @@
+.bs-component
+  .jumbotron
+    = render @issue
+    = render partial: 'issues/controllers', locals: {issue: @issue}
+
+  .row
+    .col-md-12
+      %ul.nav.nav-pills.nav-justified
+        - Speech.positions_i18n.each do |key, value|
+          %li(role="presentation" class="#{'active' if params[:position] == key}")
+            = link_to value, issue_speeches_path(issue_id: @issue, position: key)
+  .row
+    .col-md-12
+      .list-group
+        - if @speeches.empty?
+          .list-group-item
+            %h5.text-center
+              %i.fa.fa-microphone-slash
+              .text-muted
+                아직 연설이 없습니다
+        - @speeches.each do |speech|
+          = link_to speech, class: 'list-group-item' do
+            %h5.list-group-item-heading
+              = speech.title
+            %p.list-group-item-text
+              %i.fa.fa-user
+              = speech.user.email

@@ -1,0 +1,22 @@
+- issue.best_speeches.each_slice(2) do |group|
+  .row
+    - group.each do |key, value|
+      - name = value.first
+      - best_speech = value.last
+      .col-md-6
+        .panel.panel-default.speech--fixed-panel
+          .panel-body
+            %h4
+              = link_to name, issue_speeches_path(issue_id: issue, position: key)
+            - if best_speech.present?
+              %p.lead
+                = link_to best_speech.title, best_speech
+              %p
+                %small
+                  %i.fa.fa-user
+                  = best_speech.user.email
+            - else
+              %h5.text-center
+                %i.fa.fa-microphone-slash
+                .text-muted
+                  아직 연설이 없습니다

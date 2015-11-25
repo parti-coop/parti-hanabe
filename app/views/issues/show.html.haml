@@ -1,24 +1,6 @@
 .bs-component
   .jumbotron
-    %h3
-      = @issue.title
-      %small
-        = link_to [:edit, @issue] do
-          %i.fa.fa-edit
-        = link_to @issue, method: :delete, data: { confirm: 'are you sure?'} do
-          %i.fa.fa-trash
-.row
-  .col-md-6
-  .col-md-6
-.row
-  .col-md-6
-  .col-md-6
-%footer.footer
-  .container
-    = link_to new_issue_vote_path(@issue) do
-      %i.fa.fa-hand-o-down
-      투표하기
-    = link_to new_issue_speech_path(@issue) do
-      %i.fa.fa-bullhorn
-      연설하기
+    = render @issue
+    = render partial: 'controllers', locals: {issue: @issue}
 
+  = render partial: 'best', locals: {issue: @issue}

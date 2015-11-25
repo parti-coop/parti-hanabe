@@ -1,0 +1,19 @@
+.bs-component
+  .jumbotron
+    %p.small= link_to "\"#{@speech.issue.title}\"", @speech.issue
+    %h3
+      .label(class="label-#{@speech.position}")= @speech.position_i18n
+      = @speech.title
+      %small
+        = link_to [:edit, @speech] do
+          %i.fa.fa-edit
+        = link_to @speech, method: :delete, data: { confirm: 'are you sure?'} do
+          %i.fa.fa-trash
+    %p
+      %small
+        %i.fa.fa-user
+        = @speech.user.email
+
+  .row
+    .col-md-12.lead
+      = @speech.body

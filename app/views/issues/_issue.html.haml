@@ -1,0 +1,17 @@
+.issue--summary
+  %h3
+    = issue.title
+    %small
+      = link_to [:edit, issue] do
+        %i.fa.fa-edit
+      = link_to issue, method: :delete, data: { confirm: 'are you sure?'} do
+        %i.fa.fa-trash
+  %p
+    %small
+      %i.fa.fa-user
+      = issue.user.email
+  %p
+    %span.label.label-primary
+      %i.fa.fa-microphone
+      연설
+      = issue.speeches.count

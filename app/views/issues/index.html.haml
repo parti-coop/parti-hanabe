@@ -3,12 +3,14 @@
     %h1
       하나비
       %small= link_to '이슈 시작하기', new_issue_path, class: 'btn btn-primary btn-lg'
-.bs-component
   .list-group
     - @issues.each do |issue|
-      = link_to issue, class: 'list-group-item' do
-        %h5.list-group-item-heading
-          = issue.title
+      .list-group-item
+        .list-group-item-heading
+          %a(role="button" data-toggle="collapse" href="##{dom_id(issue)}" aria-expanded="false" aria-controls="#{dom_id(issue)}")= render issue
         %p.list-group-item-text
           %i.fa.fa-user
           = issue.user.email
+          .collapse(id="#{dom_id(issue)}")
+            %hr
+            = render partial: 'best', locals: {issue: issue}

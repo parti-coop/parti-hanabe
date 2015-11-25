@@ -1,0 +1,16 @@
+.well.bs-component
+  = form_for [@speech.issue, @speech] do |f|
+    %fieldset
+      .form-group
+        = f.collection_radio_buttons :position, Speech.positions_i18n, :first, :second do |b|
+          = b.label(class: 'radio-inline') do
+            = b.radio_button
+            = b.text
+      .form-group
+        = f.label :title
+        = f.text_field :title, class: 'form-control input-lg'
+      .form-group
+        = f.label :body
+        = f.text_area :body, class: 'form-control input-lg'
+      .form-group
+        = f.submit class: 'btn btn-primary btn-lg'
