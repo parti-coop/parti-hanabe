@@ -1,0 +1,9 @@
+.well.bs-component
+  = form_for @issue do |f|
+    %fieldset
+      .form-group
+        = f.label :title, '토론 주제를 적어 주세요'
+        = f.text_field :title, class: 'form-control input-lg'
+
+      .form-group
+        = f.submit class: 'btn btn-primary btn-lg'

@@ -1,2 +1,14 @@
 .bs-component
+  .jumbotron
+    %h1
+      하나비
+      %small= link_to '이슈 시작하기', new_issue_path, class: 'btn btn-primary btn-lg'
+.bs-component
   .list-group
+    - @issues.each do |issue|
+      = link_to issue, class: 'list-group-item' do
+        %h5.list-group-item-heading
+          = issue.title
+        %p.list-group-item-text
+          %i.fa.fa-user
+          = issue.user.email
