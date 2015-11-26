@@ -5,5 +5,8 @@ class Vote < ActiveRecord::Base
   belongs_to :user
 
   scope :by_position, -> (position) { send(position) }
-  scope :by_user, -> (user) { find_by(user: user) }
+
+  def self.by_user(user)
+    find_by(user: user)
+  end
 end
