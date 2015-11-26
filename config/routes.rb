@@ -7,4 +7,6 @@ Rails.application.routes.draw do
       resources :speeches
     end
   end
+
+  resources :likes
 end

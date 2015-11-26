@@ -21,5 +21,18 @@
       = @speech.body
 
   .row
+    .col-md-12.text-center
+      - unless @speech.liked_by current_user
+        = link_to likes_path(speech_id: @speech), method: 'post', class: 'btn btn-success btn-lg' do
+          %i.fa.fa-thumbs-up
+          좋아요
+          .badge= @speech.like_count
+      - else
+        = link_to like_path(speech_id: @speech), method: 'delete', class: 'btn btn-warning btn-lg' do
+          %i.fa.fa-times
+          좋아요 취소
+          .badge= @speech.like_count
+  %hr
+  .row
     .col-md-12
       = render partial: 'issues/controllers', locals: {issue: @speech.issue}
