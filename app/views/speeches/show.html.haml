@@ -32,6 +32,8 @@
             .text-muted
               %i.fa.fa-user
               = comment.user.email
+              = link_to comment, method: :delete, data: { confirm: 'Are you sure?'} do
+                %i.fa.fa-trash
   .row
     .col-md-12.text-center
       - unless @speech.liked_by current_user
