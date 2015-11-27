@@ -6,18 +6,12 @@
         %i.fa.fa-edit
       = link_to issue, method: :delete, data: { confirm: 'Are you sure?'} do
         %i.fa.fa-trash
+    .clearfix
   %p
-    %small
-      %i.fa.fa-user
-      = issue.user.email
+    - if !current_page?(controller: :speeches, action: :index, issue_id: issue)
+      .lead.pull-right= link_to '자세히 보기 >', issue_speeches_path(issue_id: issue, position: 'in_favor')
+    %i.fa.fa-user
+    = issue.user.email
   %p
-    %span.label.label-primary
-      %i.fa.fa-hand-o-down
-      투표
-      = issue.votes.count
-    &nbsp;
-    %span.label.label-danger
-      %i.fa.fa-microphone
-      연설
-      = issue.speeches.count
 
+    = render partial: 'issues/controllers', locals: {issue: issue}

@@ -1,7 +1,8 @@
 .bs-component
   .jumbotron
-    %p.small= link_to "\"#{@speech.issue.title}\"", @speech.issue
-
+    %p.small
+      = link_to issue_speeches_path(@speech.issue, position: @speech.position), style: "text-decoration: none;" do
+        "#{@speech.issue.title}"
     %h3
       = link_to issue_speeches_path(@speech.issue, position: @speech.position), style: "text-decoration: none;" do
         .label(class="label-#{@speech.position}")= @speech.position_i18n

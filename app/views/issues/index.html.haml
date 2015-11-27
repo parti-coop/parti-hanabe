@@ -9,8 +9,6 @@
         .list-group-item-heading
           %a(role="button" data-toggle="collapse" href="##{dom_id(issue)}" aria-expanded="false" aria-controls="#{dom_id(issue)}")= render issue
         %p.list-group-item-text
-          %i.fa.fa-user
-          = issue.user.email
           .collapse(id="#{dom_id(issue)}")
             %hr
             = render partial: 'best', locals: {issue: issue}

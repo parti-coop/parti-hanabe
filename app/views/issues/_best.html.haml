@@ -14,8 +14,10 @@
                   %small
                     %i.fa.fa-user
                     = value[:best_speech].user.email
-                = link_to issue_speeches_path(issue_id: issue, position: key) do
-                  #{issue.speeches.by_position(key).count}개 연설 더보기 >
+                - remain_count = issue.speeches.by_position(key).count - 1
+                - if remain_count > 0
+                  = link_to issue_speeches_path(issue_id: issue, position: key) do
+                    #{remain_count}개 연설 더보기 >
               - else
                 %h5.text-center
                   %i.fa.fa-microphone-slash

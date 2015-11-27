@@ -1,6 +1,5 @@
 .bs-component
   .jumbotron
     = render @issue
-    = render partial: 'controllers', locals: {issue: @issue}
 
   = render partial: 'best', locals: {issue: @issue}
