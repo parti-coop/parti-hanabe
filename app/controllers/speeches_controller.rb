@@ -3,7 +3,7 @@ class SpeechesController < ApplicationController
 
   def index
     @issue = Issue.find params[:issue_id]
-    @speeches = @issue.speeches
+    @speeches = @issue.speeches.order(like_count: :desc).order(created_at: :desc)
     position = params[:position]
     @speeches = @speeches.by_position(position) if position.present?
   end

@@ -10,7 +10,8 @@
         .col-md-3
           .alert(class="alert-#{key}")
             = value[:name]
-            .badge= value[:count]
+            .lead.pull-right
+              = value[:count]
 
   %section
     %h5 연설
@@ -19,7 +20,8 @@
         %ul.nav.nav-pills.nav-justified
           - Speech.positions_i18n.each do |key, value|
             %li(role="presentation" class="#{'active' if params[:position] == key}")
-              = link_to value, issue_speeches_path(issue_id: @issue, position: key)
+              = link_to issue_speeches_path(issue_id: @issue, position: key) do
+                #{value} (#{@issue.speeches.by_position(key).count})
     .row
       .col-md-12
         .list-group
@@ -32,7 +34,13 @@
           - @speeches.each do |speech|
             = link_to speech, class: 'list-group-item' do
               %h5.list-group-item-heading
+                - if speech.like_count > 0
+                  .pull-right.btn.btn-success.btn-lg.disabled
+                    %i.fa.fa-thumbs-up.disabled
+                    .badge= speech.like_count
                 = speech.title
-              %p.list-group-item-text
-                %i.fa.fa-user
-                = speech.user.email
+                .text-muted
+                  %small
+                    %i.fa.fa-user
+                    = speech.user.email
+

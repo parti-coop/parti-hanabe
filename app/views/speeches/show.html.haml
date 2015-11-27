@@ -21,6 +21,17 @@
       = @speech.body
 
   .row
+    .col-md-12.lead
+      %ul.list-group
+        %li.list-group-item
+          = render partial: 'comments/form', locals: {speech: @speech}
+        - @speech.comments.select(&:persisted?).each do |comment|
+          %li.list-group-item
+            = comment.body
+            .text-muted
+              %i.fa.fa-user
+              = comment.user.email
+  .row
     .col-md-12.text-center
       - unless @speech.liked_by current_user
         = link_to likes_path(speech_id: @speech), method: 'post', class: 'btn btn-success btn-lg' do

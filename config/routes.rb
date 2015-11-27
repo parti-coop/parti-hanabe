@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :issues do
     shallow do
       resources :votes
-      resources :speeches
+      resources :speeches do
+        resources :comments
+      end
     end
   end
 
