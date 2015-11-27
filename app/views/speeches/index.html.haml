@@ -33,10 +33,15 @@
           - @speeches.each do |speech|
             = link_to speech, class: 'list-group-item' do
               %h5.list-group-item-heading
-                - if speech.like_count > 0
-                  .pull-right.btn.btn-success.btn-lg.disabled
-                    %i.fa.fa-thumbs-up.disabled
-                    .badge= speech.like_count
+                .pull-right
+                  - if speech.like_count > 0
+                    .btn.btn-success.btn-lg.disabled
+                      %i.fa.fa-thumbs-up.disabled
+                      .badge= speech.like_count
+                  - if speech.comments.count > 0
+                    .btn.btn-primary.btn-lg.disabled
+                      %i.fa.fa-commenting.disabled
+                      .badge= speech.comments.count
                 = speech.title
                 .text-muted
                   %small
